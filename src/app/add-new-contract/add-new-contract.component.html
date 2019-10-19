@@ -1,0 +1,34 @@
+<div class="container">
+  <h5>Add New Contract</h5>
+  <div *ngIf="isLoading" class="white background" style="text-align: center">
+    <novo-spinner theme="multicolor"></novo-spinner>
+  </div>
+  <div *ngIf="!isLoading">
+    <novo-form [form]="textForm" #form>
+      <div class="novo-form-row">
+        <novo-control [form]="textForm" [control]="contractOrganizationControl"></novo-control>
+      </div>
+      <div class="novo-form-row">
+        <novo-control [form]="textForm" [control]="contractTemplateControl"></novo-control>
+      </div>
+      <div *ngIf="contractTemplate; else backTemplate">
+        <div class="novo-form-row">
+          <novo-control [autoFocus]="true" [form]="textForm" [control]="contractNameControl"></novo-control>
+        </div>
+        <div class="novo-form-row">
+          <novo-control [form]="textForm" [control]="effectiveDateControl"></novo-control>
+        </div>
+        <div class="novo-form-row">
+          <novo-control [form]="textForm" [control]="expirationDateControl"></novo-control>
+        </div>
+        <footer>
+          <button theme="secondary" (click)="goToListContracts()">Cancel</button>&nbsp;
+          <button (click)="save(form)" theme="primary">Save</button>
+        </footer>
+      </div>
+      <ng-template #backTemplate>
+        <button theme="secondary" (click)="goToListContracts()">Cancel</button>&nbsp;
+      </ng-template>
+    </novo-form><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </div>
+</div>

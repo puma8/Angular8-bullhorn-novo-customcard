@@ -1,0 +1,20 @@
+<div class="container">
+  <div *ngIf="isLoading" class="white background" style="text-align: center">
+    <novo-spinner theme="multicolor"></novo-spinner>
+  </div>
+  <div *ngIf="!isLoading">
+    <div class='page-header' style='margin-bottom: 4px'>
+      <h5>{{ responseData.ia_name }} - Contract List</h5>
+    </div>
+    <button theme="secondary" (click)="goToIntelAgree()" style="position: absolute; top: 0; right: 0;">VIEW IN
+      INTELAGREE</button>
+    <novo-table class="table-condensed" [rows]="configuration.rows" [columns]="configuration.columns"
+      [config]="configuration.config">
+    </novo-table>
+    <button theme="primary" (click)="goToNewContract()">CREATE NEW</button>&nbsp;
+    <button theme="secondary" onclick="window.open('https://preview.intelagree.com/contract/import', '_blank')">IMPORT
+      NEW</button>&nbsp;
+    <button theme="secondary" onclick="window.open('https://preview.intelagree.com/contract/upload', '_blank')">UPLOAD
+      EXISTING</button>
+  </div>
+</div>

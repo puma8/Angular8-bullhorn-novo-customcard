@@ -1,0 +1,28 @@
+<div class="container">
+  <div *ngIf="isLoading" class="white background" style="text-align: center">
+    <novo-spinner theme="multicolor"></novo-spinner>
+  </div>
+  <div *ngIf="!isLoading">
+    <div>
+      <h5>This company is not linked to an IntelAgree company.</h5>
+      <novo-form [form]="partyListForm" #partyForm>
+        <div class="novo-form-row">
+          <novo-control [form]="partyListForm" [control]="partyControl"></novo-control>
+        </div>
+      </novo-form>
+      <!-- <div class="final-value">Value: {{textForm.value | json}}</div> -->
+      <button (click)="linkExisting(partyForm)" theme="primary">LINK EXISTING</button>
+    </div>
+    <br><br>
+    <div>
+      <h5>Create a new company in IntelAgree</h5>
+      <novo-form [form]="addCompanyForm" #form>
+        <div class="novo-form-row">
+          <novo-control [form]="addCompanyForm" [control]="companyNameControl"></novo-control>
+        </div>
+      </novo-form>
+      <!-- <div class="final-value">Value: {{textForm.value | json}}</div> -->
+      <button (click)="addNewCompany(form)" theme="primary">ADD NEW</button>
+    </div>
+  </div>
+</div>
